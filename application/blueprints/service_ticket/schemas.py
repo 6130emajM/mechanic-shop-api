@@ -6,6 +6,7 @@ class ServiceTicketSchema(ma.SQLAlchemyAutoSchema):
         model = ServiceTicket
         include_fk = True
         include_relationships = True
+        dump_only = ("customer", "mechanics")
 
 service_ticket_schema = ServiceTicketSchema()
 service_tickets_schema = ServiceTicketSchema(many=True)
