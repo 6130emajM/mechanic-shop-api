@@ -1,5 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from flask_sqlalchemy import SQLAlchemy # type: ignore
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column # type: ignore
 from typing import List
 from datetime import date
 

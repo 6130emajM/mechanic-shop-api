@@ -4,8 +4,10 @@ from marshmallow import ValidationError
 from application.blueprints.customer import customer_bp
 from application.models import db, Customer
 from .schemas import customer_schema, customers_schema
+from application.extensions import limiter
 
 @customer_bp.route("/", methods=['POST'])
+@limiter.limit("5 per hour")
 def create_customer():
     try:
         data = customer_schema.load(request.json)
