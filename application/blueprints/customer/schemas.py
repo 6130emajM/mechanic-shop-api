@@ -8,3 +8,9 @@ class CustomerSchema(ma.SQLAlchemyAutoSchema):
 customer_schema = CustomerSchema()
 customers_schema = CustomerSchema(many=True)
 
+class LoginSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Customer
+        fields = ("email", "password")
+
+login_schema = LoginSchema()
