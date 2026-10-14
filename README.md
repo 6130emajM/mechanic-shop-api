@@ -17,11 +17,28 @@ A Flask REST API for managing a mechanic shop's customers, mechanics, and servic
 7. API available at http://127.0.0.1:5000
 
 ## Endpoints
-- POST/GET /customers/, GET/PUT/DELETE /customers/<id>
-- POST/GET /mechanics/, PUT/DELETE /mechanics/<id>
-- POST/GET /service-tickets/
-- PUT /service-tickets/<ticket_id>/assign-mechanic/<mechanic_id>
-- PUT /service-tickets/<ticket_id>/remove-mechanic/<mechanic_id>
+
+**Customers**
+- POST /customers/ (create), GET /customers/ (list)
+- GET, PUT, DELETE /customers/{id}
+- POST /customers/login (returns a token)
+
+**Mechanics**
+- POST /mechanics/, GET /mechanics/
+- PUT, DELETE /mechanics/{id}
+- GET /mechanics/most-tickets
+
+**Service Tickets**
+- POST /service-tickets/, GET /service-tickets/
+- PUT /service-tickets/{ticket_id}/assign-mechanic/{mechanic_id}
+- PUT /service-tickets/{ticket_id}/remove-mechanic/{mechanic_id}
+- GET /service-tickets/my-tickets (requires token)
+- PUT /service-tickets/{ticket_id}/edit
+- PUT /service-tickets/{ticket_id}/add-part/{inventory_id}
+
+**Inventory**
+- POST /inventory/, GET /inventory/
+- GET, PUT, DELETE /inventory/{id}
 
 ## Live Deployment
 
