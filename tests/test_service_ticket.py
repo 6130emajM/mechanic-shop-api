@@ -105,6 +105,20 @@ class TestServiceTicket(unittest.TestCase):
         response = self.client.put('/service-tickets/9999/edit', json=payload)
         self.assertEqual(response.status_code, 404)
 
+    def test_add_part_to_ticket(self):
+        from application.models import Inventory
+        with self.app.app_context():
+            item = Inventory(name="Oil Filter", price=12.99)
+            db.session.add(item)
+            db.session.commit()
+            inventory_id = item.id
+        response = self.client.put(f"/service-tickets/{self.ticket_id}/add-part/{inventory_id}")
+        self.assertEqual(response.status_code, 200)
 
-if __name__ == '__main__':
+    def test_add_part_not_found(self):
+        response = self.client.put(f"/service-tickets/{self.ticket_id}/add-part/9999")
+        self.assertEqual(response.status_code, 404)
+
+
+if __name__ == "__main__":
     unittest.main()
